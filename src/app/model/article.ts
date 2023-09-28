@@ -3,9 +3,11 @@ export abstract class Article {
     id: string
     title: string;
     author: string;
-    publishedAt: string; //date time in ISO format 
+    publishedAt: string; //date time in ISO format
     url: string;
     type: ArticleType;
+    description: string;
+    videoUrl: string;
 }
 
 export class NormalArticle extends Article {

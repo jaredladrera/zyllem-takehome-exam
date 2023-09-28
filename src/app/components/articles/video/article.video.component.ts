@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { DomSanitizer } from "@angular/platform-browser";
 
 import { Article } from "src/app/model/article";
@@ -9,7 +9,7 @@ import { AbstractArticleComponent } from "../abstract.article.component";
     templateUrl: './article.video.component.html',
     styleUrls: ['./article.video.component.scss']
 })
-export class ArticleVideoComponent extends AbstractArticleComponent {
+export class ArticleVideoComponent extends AbstractArticleComponent implements OnInit {
 
     @Input() article: Article;
 
@@ -22,4 +22,9 @@ export class ArticleVideoComponent extends AbstractArticleComponent {
     ) {
         super();
     }
+
+  ngOnInit() {
+    console.log('hello')
+    console.log('video');
+  }
 }

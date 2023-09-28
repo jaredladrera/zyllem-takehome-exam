@@ -3,3 +3,54 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+.item-container {
+  display: flex;
+  /* flex-direction: row; */
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  /* border: 1px solid red; */
+}
+
+.card {
+  height: 300px;
+  border: 2px solid black;
+}
+
+
+.article-list {
+  border: 2px solid black;
+  /* display: flex; */
+  /* margin: 5px; */
+  padding: 20px;
+  width: 250px;
+  /* height: 250px; */
+  /* flex-grow: 1; */
+}
+
+
+/* p{
+  display: inline-block;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space:nowrap;
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis ;
+  height:150px;
+} */
+
+
+img {
+  width: 250px;
+  height: 200px;
+}
+.article-list {
+  word-break: break-all;
+
+}

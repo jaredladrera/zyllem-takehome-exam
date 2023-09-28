@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fuid">
   <div style="text-align:center">
     <img
       alt="Zyllem Logo"
@@ -12,13 +12,74 @@
   <h3>Put below a recently published video article given there is one or more video article types in the list.</h3>
 
   <div class="article-video">
+    <div class="row justify-content-center"><h3><b>Success story</b></h3></div>
+    <article-video-component [article]="results[4]"></article-video-component>
     <ng-container *ngIf="videoArticleHighlight">
       <!-- put the title and the article video component here -->
+
     </ng-container>
   </div>
 
   <!-- Feel free to remove this holder -->
   <h3>List of article goes here: (do not include the recently published video article in the list if you already placed it at the top)</h3>
+
+  <!-- <div class="item-container">
+    <div class="list-card" *ngFor="let result of results">
+      <div class="article-list">
+        <div class="title">{{ result.title }}</div>
+
+        <div class="article-image" *ngIf="result.description">
+           <div [innerHTML]="result.description"></div>
+        </div>
+        <div class="article-image" *ngIf="result.featureImgUrl">
+          <img [src]="result.featureImgUrl" alt="" srcset="">
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="row">
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="filterArticle">Example select</label>
+        <select class="form-control" id="filterArticle"  (change)="getFiltered($event)">
+          <option value="NORMAL">NORMAL</option>
+          <option value="FEATURED">FEATURED</option>
+          <option value="VIDEO">VIDEO</option>
+          <option value="FEATURED_AD">FEATURED AD</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+<div class="row mb-3 justify-content-center">
+
+    <div class="list-card" *ngFor="let result of results | article: filteredArticle">
+
+        <div class="col-sm-3">
+            <div class="card border-dark mb-5" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{ result.title }}</h5>
+
+                  <div class="article-image" *ngIf="result.description">
+                    <!-- <div [innerHTML]="result.description"></div> -->
+                    <p class="card-text" [innerHTML]="result.description | truncate:250 "></p>
+                  </div>
+
+                  <div class="article-image" *ngIf="result.featureImgUrl">
+                    <img [src]="result.featureImgUrl" alt="" srcset="">
+                  </div>
+
+                  <div class="article-image" *ngIf="result.adBannerUrl">
+                    <img [src]="result.adBannerUrl" alt="" srcset="">
+                  </div>
+
+              </div>
+            </div>
+          </div>
+    </div>
+  </div>
+
 
   <!-- To put the articles inside this container -->
   <div class="article-container">
@@ -28,9 +89,9 @@
       </ng-container>
     </div>
   </div><!--.article-container-->
-  
-  <div class="bonus-point-container">
-    <h3>Instructions:</h3>
+
+  <!-- <div class="bonus-point-container"> -->
+    <!-- <h3>Instructions:</h3>
     <ul>
       <li>Fix the build</li>
       <li>Allow to filter by article type for the list</li>
@@ -44,5 +105,5 @@
       <li>Get real data from an API to replace our mock data</li>
       <li>Apply angular router to show an article detail page when you open it from the list</li>
     </ul>
-  </div> <!--.bonus-point-container -->
+  </div> .bonus-point-container -->
 </div>

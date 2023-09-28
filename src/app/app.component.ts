@@ -4,7 +4,9 @@ import {
 } from '@angular/core';
 
 import { ZyllemApiService } from "./app.service";
-import { Article, VideoArticle } from './model/article';
+import { Article, VideoArticle, ArticleType } from './model/article';
+import { filter } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +14,8 @@ import { Article, VideoArticle } from './model/article';
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
+
+
 export class AppComponent implements OnInit {
 
   constructor(
@@ -19,16 +23,33 @@ export class AppComponent implements OnInit {
     private readonly cdr: ChangeDetectorRef
   ) { }
 
-  private results: Article[];
+  filteredArticle = "";
+  getAllArticle: Article[];
+  results: Article[];
   videoArticleHighlight: VideoArticle;
 
   get articles() {
     return this.results;
   }
 
-  ngOnInit(): void {
+  getFiltered(evt){
+    let str = evt.target.value;
+
+    this.filteredArticle = str;
+    // if (typeof str === 'string') {
+    //   console.log('test')
+    //   // this.filteredArticle =this.results.filter(val => str === val.type);
+    //   console.log(this.filteredArticle);
+    // }
+  }
+
+  arTypes: ArticleType;
+
+
+  ngOnInit() {
     this.apiService.getArticles()
       .subscribe(result => {
+        console.log('results', result)
         this.results = result;
         this.cdr.markForCheck();
       });
